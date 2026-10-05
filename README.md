@@ -75,6 +75,36 @@ El repositorio se organiza en módulos independientes para cada patrón:
 * **Punto de Entrada:** `MainCHOR.java`.
 
 
+### 7.  Patrón Memento (Comportamiento)
+* **Propósito:** Permitir capturar y externalizar el estado interno de un objeto sin violar su encapsulamiento, de manera que el objeto pueda ser restaurado posteriormente a dicho estado (soporte para operaciones de Undo/Redo).
+
+* **Ubicación:** Carpeta Memento/.
+
+* **Estructura  implementada:** 
+
+TextEditor (Originator): Posee el estado real (content, cursorPosition). Es el único responsable de empaquetar su estado en un memento (save()) y de restaurarse a partir de él (restore()).
+
+TextEditorMemento (Memento): Objeto inmutable que almacena la instantánea del estado. Funciona como una caja negra hacia el exterior.
+
+History (Caretaker): Administra la pila de instantáneas pasadas. Almacena y provee los mementos según se requiera, sin examinar ni manipular su contenido interno.
+
+* **Punto de Entrada:** MainMemento.java.
+
+### 8. Patrón State (Comportamiento)
+* **Propósito:** Permitir que un objeto altere su comportamiento cuando cambia su estado interno, dando la apariencia de haber cambiado de clase al eliminar sentencias condicionales masivas (if/switch) y encapsular los comportamientos específicos en clases de estado independientes.
+
+* **Ubicación:** Carpeta State/.
+
+* **Estructura implementada:**
+
+Player (Contexto): Mantiene la referencia al estado actual y le delega la ejecución de las acciones (clickPlay(), clickLock(), clickNext()). Permite realizar transiciones mediante changeState().
+
+State (Clase Abstracta / Interfaz): Define el contrato para todas las operaciones sensibles al estado (onPlay(), onLock(), onNext()) y mantiene una referencia al contexto Player.
+
+ReadyState, PlayingState, LockedState (Estados Concretos): Implementan las reacciones particulares a cada evento y controlan las transiciones dinámicas entre los distintos modos del reproductor.
+
+* **Punto de Entrada:** MainState.java.
+
 ## 🚀 Instrucciones de Ejecución
 
 Asegúrate de tener instalado **Java JDK** (versión 8 o superior) en tu entorno.
