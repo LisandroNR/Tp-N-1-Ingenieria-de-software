@@ -34,6 +34,47 @@ El repositorio se organiza en módulos independientes para cada patrón:
 `Context` (Clase de Contexto): Contiene una referencia a `Strategy` (composición) y permite modificarla mediante `setStrategy()` o ejecutarla mediante `executeStrategy()`
 * **Punto de Entrada:** `MainStrategy.java`.
 
+### 4. Patrón Decorator (Estructural)
+* **Propósito:** Permitir añadir funcionalidades de manera dinámica a un objeto envolviéndolo en clases contenedoras (decoradores) que comparten la misma interfaz, ofreciendo una alternativa flexible a la herencia para extender comportamientos.
+* **Ubicación:** Carpeta `Decorator/`.
+* **Estructura implementada:**
+`DataSource` (Interfaz): Define el contrato estándar para leer y escribir datos.
+
+`FileDataSource` (Componente Concreto): Implementación básica encargada de operar directamente sobre el archivo.
+
+`DataSourceDecorator` (Decorador Base): Clase que implementa la interfaz y mantiene una referencia interna (`wrappee`) al objeto envuelto.
+
+`EncryptionDecorator` y `CompressionDecorator` (Decoradores Concretos): Extienden el decorador base para aplicar capas adicionales de seguridad (encriptación) o optimización (compresión) en tiempo de ejecución.
+* **Punto de Entrada:** `MainDecorator.java`.
+
+### 5. Patrón Facade (Estructural)
+* **Propósito:** Proporcionar una interfaz unificada y simplificada a un conjunto de interfaces de un subsistema complejo, facilitando su uso por parte del cliente y reduciendo el acoplamiento general del sistema.
+* **Ubicación:** Carpeta `Facade/`.
+* **Estructura implementada:**
+`Facade` (Clase Fachada Principal): Coordina y agrupa las llamadas a las distintas clases del subsistema a través de un método unificado (subsystemOperation()).
+
+`AdditionalFacade` (Fachada Adicional): Ofrece operaciones complementarias para evitar sobrecargar la fachada principal con funciones no relacionadas.
+
+`SubsystemOne`, `SubsystemTwo`, `SubsystemThree` (Clases del Subsistema): Conjunto de clases internas que realizan el trabajo real de forma independiente.
+
+`MainFacade` (Cliente): Interactúa únicamente con la fachada, desconociendo la complejidad de las clases internas del subsistema.
+* **Punto de Entrada:** `MainFacade.java`.
+
+### 6. Patrón Chain of Responsibility (Comportamiento)
+* **Propósito:** Permitir que una solicitud pase a través de una cadena de objetos receptores hasta que uno de ellos la procese, desacoplando al emisor del receptor y permitiendo flexibilidad para que la petición escale automáticamente.
+* **Ubicación:** Carpeta `ChainOfResponsibility/`.
+* **Estructura implementada:**
+`ComponentWithContextualHelp` (Interfaz Manejador): Declara el contrato común (`showHelp()`) para procesar las solicitudes de ayuda.
+
+`Component` (Manejador Base): Implementa la interfaz y mantiene una referencia al siguiente eslabón (`container`), encargándose de delegar la solicitud si el componente actual no puede resolverla.
+
+`Container` (Clase Contenedor): Extiende del componente base y agrupa una colección de elementos hijos.
+
+`Button`, `Panel`, `Dialog` (Manejadores Concretos): Clases finales que evalúan si poseen recursos propios de ayuda o si deben propagar el evento hacia arriba en la cadena.
+
+* **Punto de Entrada:** `MainCHOR.java`.
+
+
 ## 🚀 Instrucciones de Ejecución
 
 Asegúrate de tener instalado **Java JDK** (versión 8 o superior) en tu entorno.
@@ -43,14 +84,15 @@ Asegúrate de tener instalado **Java JDK** (versión 8 o superior) en tu entorno
 git clone <https://github.com/LisandroNR/Tp-N-1-Ingenieria-de-software.git>
 cd Tp-N-1-Ingenieria-de-software
 
-Ejecución del Patrón Observer/Strategy/Singleton
-Para compilar y ejecutar el ejemplo del patrón Observer/Strategy/Singleton:
+Ejecución del Patrón Observer/Strategy/Singleton/Decorator/Facade
+Para compilar y ejecutar el ejemplo del patrón Observer/Strategy/Singleton/Decorator/Facade/ChainOfResponsibility:
 
 Ingresar al directorio del patrón
-cd Observer/Strategy/Singleton
+cd Observer/Strategy/Singleton/Decorator/Facade/ChainOfResponsibility
 
 Compilar los archivos Java:
 javac *.java
 
 Ejecutar la clase principal
-java MainObserver/MainStrategy/MainSingleton
+java MainObserver/MainStrategy/MainSingleton/MainDecorator/MainFacade/MainCHOR
+
