@@ -6,7 +6,6 @@ class Player {
     private int currentTrack = 1;
 
     public Player() {
-        // Estado inicial
         this.state = new ReadyState(this);
     }
 
@@ -25,8 +24,6 @@ class Player {
     public boolean isPlaying() {
         return playing;
     }
-
-    // El contexto delega ciegamente en su estado actual
     public void clickPlay() {
         System.out.println("[Boton Play presionado] -> " + state.onPlay());
     }
@@ -39,7 +36,6 @@ class Player {
         System.out.println("[Boton Next presionado] -> " + state.onNext());
     }
 
-    // Metodos auxiliares que los estados invocan sobre el reproductor
     public String startPlayback() {
         this.playing = true;
         return "Reproduciendo pista " + currentTrack;
