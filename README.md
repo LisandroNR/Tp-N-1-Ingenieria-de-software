@@ -1,56 +1,45 @@
-# Trabajo Práctico Nº 1: Patrones de Diseño
+# Trabajo Práctico N° 1: Patrones de Diseño 
 
-## 🎯 Objetivo del Proyecto
-El propósito de este proyecto es implementar, analizar y documentar tres patrones de diseño de software fundamentales (**Singleton**, **Observer** y **Strategy**) utilizando Java. Se busca aplicar principios de programación orientada a objetos (POO), desacoplamiento, extensibilidad y modularidad en la arquitectura del código fuente.
+**Universidad Nacional de Villa Mercedes (UNViMe)**  
+**Materia:** Ingeniería de Software  
+**Grupo:** Cahe Emilio, Carballo Emilio, García Nicolás, Mercado Luka, Moneo Martina, Oliva Jonathan, Rimada Lisandro, Sibona Franco, Silvera Álvaro.
 
----
+## 📌 Objetivo del Proyecto
+El objetivo de este proyecto es analizar, comprender e implementar mediante código fuente los principales Patrones de Diseño orientados a objetos. Se busca demostrar cómo estos patrones resuelven problemas recurrentes de arquitectura de software, mejorando la modularidad, escalabilidad y el mantenimiento del código sin violar principios de diseño sólidos.
 
-## 🏗️ Patrones Implementados
+## 🧩 Patrones Implementados
 
-El repositorio se organiza en módulos independientes para cada patrón:
+El repositorio contiene ejemplos prácticos divididos en tres categorías fundamentales:
 
-### 1. Patrón Singleton (Creacional)
-* **Propósito:** Garantizar que una clase tenga una única instancia en toda la aplicación y proporcionar un punto de acceso global a ella.
-* **Ubicación:** Carpeta `Singleton/`.
-* **Punto de Entrada:** `MainSingleton.java`.
+### Patrones Creacionales
+Se enfocan en los mecanismos de creación de objetos.
+*   **Builder:** Patrón que nos permite construir objetos complejos paso a paso. Separa el código de construcción de la lógica de negocio.
+*   **Prototype:** Patrón que nos permite copiar objetos existentes sin que el código dependa de sus clases.
 
-### 2. Patrón Observer (Comportamiento)
-* **Propósito:** Definir una relación de dependencia uno a muchos entre objetos, permitiendo que cuando un objeto central (*Sujeto/Editor*) cambie de estado o ejecute una acción, todos sus dependientes (*Observadores/Listeners*) sean notificados automáticamente sin generar acoplamiento fuerte.
-* **Ubicación:** Carpeta `Observer/`.
-* **Estructura implementada:**
-  * `Editor`: Clase generadora de eventos (abrir y guardar archivos).
-  * `EventManager`: Administrador que gestiona las suscripciones, cancelaciones y notificaciones de eventos.
-  * `EventListeners`: Interfaz que define el método de actualización (`update(filename)`).
-  * `EmailAlertsListener`: Observador concreto para alertas por correo electrónico.
-  * `LoggingListener`: Observador concreto para registrar eventos en bitácoras/logs.
-* **Punto de Entrada:** `MainObserver.java`.
+### Patrones Estructurales
+*   **Adapter:** Permite la colaboración entre objetos con interfaces incompatibles. Separa la lógica de traducción de la lógica de negocio.
+*   **Decorator:** Permite comprimir y encriptar información sensible, independientemente del código que utilice esos datos. Suma comportamientos a un objeto sin tener que crear subclases nuevas.
+*   **Facade:** Proporciona una interfaz simplificada a una biblioteca, un framework o cualquier otro grupo complejo de clases. 
 
-### 3. Patrón Strategy (Comportamiento)
-* **Propósito:** Definir una familia de algoritmos, encapsular cada uno de ellos y hacerlos intercambiables en tiempo de ejecución, permitiendo variar el comportamiento de un objeto independientemente de los clientes que lo utilicen.
-* **Ubicación:** Carpeta `Strategy/`.
-* **Estructura implementada:**
-`Strategy (Interfaz)`: Define el contrato común (`algorithm()`) que deben cumplir todas las estrategias concretas.
-`ConcreteStrategyA`, `ConcreteStrategyB`, `ConcreteStrategyC` (Clases Concretas): Implementan la interfaz aportando distintas variantes del algoritmo.
-`Context` (Clase de Contexto): Contiene una referencia a `Strategy` (composición) y permite modificarla mediante `setStrategy()` o ejecutarla mediante `executeStrategy()`
-* **Punto de Entrada:** `MainStrategy.java`.
+### Patrones de Comportamiento
+*   **Chain of Responsibility:** Permite pasar solicitudes a lo largo de una cadena de manejadores. Cada clase se encarga de realizar una única tarea sobre la solicitud.
+*   **Memento:** Permite guardar y restaurar el estado previo de un objeto sin revelar los detalles de su implementación.
+*   **Observer:** Permite definir un mecanismo de suscripción para notificar a varios objetos sobre cualquier evento que les suceda al objeto que están observando.
+*   **State:** Permite a un objeto alterar su comportamiento cuando su estado interno cambia. Sustituye extensas cadenas de switch o if-else dependientes del estado por polimorfismo limpio.
+*   **Strategy:** Permite definir una familia de algoritmos, colocar cada uno en una clase separada y hacer que sus objetos sean intercambiables. 
 
 ## 🚀 Instrucciones de Ejecución
 
-Asegúrate de tener instalado **Java JDK** (versión 8 o superior) en tu entorno.
+El código fuente de este proyecto está desarrollado en **Java**. Para ejecutar los ejemplos de implementación de cada patrón, sigue estos pasos:
 
-### Clonar el repositorio
-```bash
-git clone <https://github.com/LisandroNR/Tp-N-1-Ingenieria-de-software.git>
-cd Tp-N-1-Ingenieria-de-software
-
-Ejecución del Patrón Observer/Strategy/Singleton
-Para compilar y ejecutar el ejemplo del patrón Observer/Strategy/Singleton:
-
-Ingresar al directorio del patrón
-cd Observer/Strategy/Singleton
-
-Compilar los archivos Java:
-javac *.java
-
-Ejecutar la clase principal
-java MainObserver/MainStrategy/MainSingleton
+1. **Clonar el repositorio:**
+   git clone https://github.com/LisandroNR/Patrones-IngSoftware.git
+   
+2. **Abrir el proyecto:**
+   Abre la carpeta raíz del repositorio en un entorno de desarrollo compatible con Java.
+   
+3. **Ejecutar los patrones:**
+   Cada patrón de diseño se encuentra encapsulado en su propia subcarpeta. 
+   * Navega hasta la carpeta del patrón que deseas probar.
+   * Abre el archivo principal que contiene la clase ejecutora.
+   * Ejecuta el archivo para visualizar la salida en la terminal.
