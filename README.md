@@ -1,4 +1,4 @@
-# Trabajo Práctico N° 1: Patrones de Diseño 
+# Patrones de Diseño 
 
 **Universidad Nacional de Villa Mercedes (UNViMe)**  
 **Materia:** Ingeniería de Software  
@@ -133,4 +133,3 @@ javac *.java
 Ejecutar la clase principal
 java MainObserver/MainStrategy/MainSingleton/MainDecorator/MainFacade/MainCHOR
 
->>>>>>> 8fd541553b7b800805476bab12a948ac3e3e95bd
